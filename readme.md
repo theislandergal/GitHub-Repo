@@ -1,4 +1,4 @@
 # Read me Test
 ## Smaller Title
-** Bold **
+**Bold**
 Normal
