@@ -25,6 +25,8 @@ let xinitGreen; // starting x position green team
 let yinitGreen; // starting y position green team
 let xinitOrange; // starting x position orange team
 let yinitOrange; // starting y position orange team
+let OrangeScore = 0;
+let GreenScore = 0;
 
 /**
 Description of preload
@@ -40,10 +42,6 @@ Description of setup
 function setup() {
  createCanvas(700,500); // canvas size
  frameRate(30); // framerate for 
- ellipseMode(RADIUS); // ellipse mode based on Radius size
- // Set the starting position of Ponyo and paddles
-  xinitPonyo = width / 2;
-  yinitPonyo = height / 2;
   xinitGreen = width - 30;
   yinitGreen = height / 2 - 35;
   xinitOrange = 30;
@@ -70,24 +68,38 @@ function draw() {
   noStroke();
   fill(0,0,255);
   // Loading image and paddles with inital positions
-  image(ponyo,xinitPonyo,yinitPonyo,rad,rad);
   // Calling paddle moving functions
   movePaddleGreen(xinitGreen,verticalOffsetGreen);
   movePaddleOrange(xinitOrange,verticalOffsetOrange);
+  Score();
+  MovePonyo();
 
-    // Update the position of Ponyo
+
+
+}
+
+function SpawnPonyo(){
+  ellipseMode(RADIUS); // ellipse mode based on Radius size
+  // Set the starting position of Ponyo and paddles
+   xinitPonyo = width / 2;
+   yinitPonyo = height / 2;
+}
+
+function MovePonyo(){
+      // Update the position of Ponyo
     // Code taken from the p5js reference
     xinitPonyo = xinitPonyo + xspeed * xdirection;
     yinitPonyo = yinitPonyo + yspeed * ydirection;
   
     // Test to see if the shape exceeds the boundaries of the screen
     // If it does, reverse its direction by multiplying by -1
-    if (xinitPonyo > width - rad || xinitPonyo < rad) {
-      xdirection *= -1;
-    }
+    // if (xinitPonyo > width - rad || xinitPonyo < rad) {
+    //   xdirection *= -1;
+    // }
     if (yinitPonyo > height - rad || yinitPonyo < rad) {
       ydirection *= -1;
     }
+    image(ponyo,xinitPonyo,yinitPonyo,rad,rad);
 }
 
 // Paddle creation functions
@@ -101,7 +113,20 @@ function movePaddleOrange(xinitOrange,yinitOrange){
   rect(xinitOrange,yinitOrange,10,70);
 }
 
-// Paddle Moving function by key pressing
+function Score(){
+  if (xinitPonyo >= width){
+    OrangeScore ++;
+    SpawnPonyo();
+    print("Orange",OrangeScore);
+  } else if (xinitPonyo <= 0){
+    GreenScore ++;
+    SpawnPonyo();
+    print("Green",GreenScore);
+  }
+}
+
+// Paddle Moving function by key pressing 
+//MAKE IT keyisDown
 function keyPressed(){
     if (keyCode == UP_ARROW && verticalOffsetGreen > 0){
        verticalOffsetGreen = verticalOffsetGreen - 20;
