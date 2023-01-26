@@ -127,14 +127,14 @@ function Score(){
 
 // Paddle Moving function by key pressing 
 //MAKE IT keyisDown
-function keyPressed(){
-    if (keyCode == UP_ARROW && verticalOffsetGreen > 0){
+function modePaddles(){
+    keyisDown(UP_ARROW){
        verticalOffsetGreen = verticalOffsetGreen - 20;
-     } else if (keyCode == DOWN_ARROW && verticalOffsetGreen <= height){
-       verticalOffsetGreen = verticalOffsetGreen + 20;
-     } else if (keyCode == 87 && verticalOffsetOrange > 0){
-        verticalOffsetOrange = verticalOffsetOrange - 20;
-      } else if (keyCode == 83 && verticalOffsetOrange <= height){
-        verticalOffsetOrange = verticalOffsetOrange + 20;
+    //  } else if (keyCode == DOWN_ARROW && verticalOffsetGreen <= height){
+    //    verticalOffsetGreen = verticalOffsetGreen + 20;
+    //  } else if (keyCode == 87 && verticalOffsetOrange > 0){
+    //     verticalOffsetOrange = verticalOffsetOrange - 20;
+    //   } else if (keyCode == 83 && verticalOffsetOrange <= height){
+    //     verticalOffsetOrange = verticalOffsetOrange + 20;
       }
     }
