@@ -1,7 +1,7 @@
 # Sense of Violence
 ## by Carolie Delisle (40179876)
 
-![Inspiration Image](Project 1 - Particles/Eye-surrealism.jpeg)
+![Inspiration Image](Eye-surrealism.jpeg)
 
 This project was based on "personality sets" that were provided in class, mine was **Violent and Scary**
 At first, I struggled with the idea, not being violent or scary in anyway, I considered what did I find violent and/or scary. 
