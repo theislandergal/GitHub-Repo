@@ -12,6 +12,6 @@ I started researching images and text, about sensual representation of violence,
 
 Here I've added my hand notes from my pad, going from ideation, to research to semi-coding. 
 The current version is not what I wanted it to be but.. it is something. 
-![Notes](/Notes/Notes - page2.png)
-![Notes](/Notes/Notes - page3.png)
-![Notes](/Notes/Notes - page4.png)
+![Notes](Notes/Notes - page 2.png)
+![Notes](Notes/Notes - page3.png)
+![Notes](Notes/Notes - page4.png)
