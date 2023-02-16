@@ -1,3 +1,4 @@
-# Template p5 project
+# Sense of Violence
+## by Carolie Delisle (40179876)
 
-This is the README file for the entire project. For more official projects you should write information here about the nature of the project, your name, any special explanations of how the project works, etc.
+![Inspiration Image](Project 1 - Particles/Eye-surrealism.jpeg)
