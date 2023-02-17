@@ -1,91 +1,84 @@
 /**
-Title of Project
-Author Name
+Particles with Personalities
+Carolie Delisle (40179876)
 
-This is a template. You must fill in the title,
-author, and this description to match your project!
+See README.md for complete description
 */
 
 "use strict";
 
+//Setting up the arrays to hold my particles and call on them
 let violent = [];
 let scared = [];
 let ally = [];
 
 /**
-Description of preload
-*/
-function preload() {
-
-}
-
-
-/**
-Description of setup
+ Creating a variating canvas and generating the particles
 */
 function setup() {
-    createCanvas(windowWidth,windowHeight);
-    for(let i = 0; i < 5; i++){
+    createCanvas(windowWidth,windowHeight); // Here I found a way to have the canvas fit the size of the current window
+    for(let i = 0; i < 5; i++){ // for loop creating 5 new violent particles and scared particles
         violent[i] = new violentPart();
         scared[i] = new scaredPart();
     }
-    for(let j = 0; j < 3; j++){
+    for(let j = 0; j < 3; j++){ // for loop creating 3 new violent particles and scared particles
         ally[j] = new allyPart();
     }
 }
 
 
 /**
-Description of draw()
+Displaying a specific coloured background and the particles and running the various connect functions based on the previously created arrays
 */
 function draw() {
-    background(39,38,64);
-    for(let i = 0; i < violent.length; i++){
-        violent[i].display();
-        violent[i].connect(scared);
+    background(39,38,64); // deeep purple
+    for(let i = 0; i < violent.length; i++){ // for loop, goes through the array based on it's length and performs the various functions
+        violent[i].display(); // display the particles
+        violent[i].connect(scared); // violent connects to scared
     } 
-    for(let i = 0; i < scared.length; i++){
-        scared[i].display();
-        scared[i].connect(violent);
+    for(let i = 0; i < scared.length; i++){ // for loop, goes through the array based on it's length and performs the various functions
+        scared[i].display(); // display the particles
+        scared[i].connect(violent); // scared connects to violent
     } 
-    for(let i = 0; i < ally.length; i++){
-        ally[i].display();
-        ally[i].connect(violent);
+    for(let i = 0; i < ally.length; i++){ // for loop, goes through the array based on it's length and performs the various functions
+        ally[i].display(); // display the particles
+        ally[i].connect(violent); // ally connects to violent
     } 
 }
 
+// Class creation to create the Violent Particles
 class violentPart{
     constructor(){
-        this.x = random(width);
-        this.y = random(height);
-        this.diameter = random(50,60);
-        this.speed = 5;
-        this.xdirection = 0;
-        this.ydirection = 0;
-        this.thresh = 5;
+        this.x = random(width); // created at a random x point based on width
+        this.y = random(height); // created at a random y point based on height
+        this.diameter = random(50,60); // created in a random size within specific range
+        this.speed = 5; // will be jittered at a specific speed
+        this.xdirection = 0; // direction variables to limit it's movement area
+        this.ydirection = 0; // direction variables to limit it's movement area
+        this.thresh = 5; // threshold with which it will react to other particles
     }
     display(){
-        push();
-        noStroke();
-        fill(random(55,65),31,random(65,75));
-        ellipse(this.x,this.y,this.diameter);
+        push(); // push and pop to avoid affecting other elements
+        noStroke(); // no stroke
+        fill(random(55,65),31,random(65,75)); // Purple fill
+        ellipse(this.x,this.y,this.diameter); // Ellipse based on previously determined parameters
         pop();
-        this.x += random(-this.speed,this.speed);
-        this.y += random(-this.speed,this.speed);
-        if (this.y > height - this.diameter/2 || this.y < this.diameter/2) {
-            this.ydirection *= -1;
+        this.x += random(-this.speed,this.speed); // Creating a x jitter
+        this.y += random(-this.speed,this.speed); // Creating a y jitter
+        if (this.y > height - this.diameter/2 || this.y < this.diameter/2) { // Limiting it's movement area y wise
+            this.ydirection *= -1; // 180° your direction on the y axis
           }
-          if (this.x > width - this.diameter/2 || this.x < this.diameter/2) {
-            this.xdirection *= -1;
+          if (this.x > width - this.diameter/2 || this.x < this.diameter/2) { // Limiting it's movement area x wise
+            this.xdirection *= -1; // 180° your direction on the x axis
         }
 
     }
-    connect(scaredArray){ 
-        for(let i = 0; i < scaredArray.length; i++){
-        if (dist(scaredArray[i].x, scaredArray[i].y, this.x, this.y) <= this.thresh) {
-            stroke(62,31,71);
-            strokeWeight(10);
-            line(scaredArray[i].x, scaredArray[i].y, this.x, this.y);
+    connect(scaredArray){ // connecting to scared particles
+        for(let i = 0; i < scaredArray.length; i++){ // for loop, going through each scared particles in the array 
+        if (dist(scaredArray[i].x, scaredArray[i].y, this.x, this.y) <= this.thresh) { // if scared particle is located this.thresh to violent particle
+            stroke(62,31,71); // then create a line between both, in the violent colour
+            strokeWeight(10); // 10px stoke
+            line(scaredArray[i].x, scaredArray[i].y, this.x, this.y); // from violent center to scared center
           }
         }
       }
@@ -93,35 +86,35 @@ class violentPart{
 
 class scaredPart{
     constructor(){
-        this.x = random(width);
-        this.y = random(height);
-        this.diameter = random(40,50);
-        this.speed = 3;
-        this.xdirection = 0;
-        this.ydirection = 0;
-        this.thresh = 100;
+        this.x = random(width); // created at a random x point based on width
+        this.y = random(height); // created at a random y point based on height
+        this.diameter = random(40,50); // created in a random size within specific range
+        this.speed = 3; // will be jittered at a specific speed
+        this.xdirection = 0; // direction variables to limit it's movement area
+        this.ydirection = 0; // direction variables to limit it's movement area
+        this.thresh = 100; // threshold with which it will react to other particles
     }
     display(){
-        push();
-        noStroke();
-        fill(random(200,220),random(165,175),37);
-        ellipse(this.x,this.y,this.diameter);
+        push(); // push and pop to avoid affecting other elements
+        noStroke(); // no stroke
+        fill(random(200,220),random(165,175),37); // Golden fill
+        ellipse(this.x,this.y,this.diameter); // Ellipse based on previously determined parameters
         pop();
-        this.x += random(-this.speed,this.speed);
-        this.y += random(-this.speed,this.speed);
-        if (this.y > height - this.diameter/2  || this.y < this.diameter/2 ) {
-            this.ydirection *= -1;
+        this.x += random(-this.speed,this.speed); // Creating a x jitter
+        this.y += random(-this.speed,this.speed); // Creating a y jitter
+        if (this.y > height - this.diameter/2  || this.y < this.diameter/2 ) { // Limiting it's movement area y wise
+            this.ydirection *= -1; // 180° your direction on the y axis
           }
-        if (this.x > width - this.diameter/2  || this.x < this.diameter/2 ) {
-            this.xdirection *= -1;
+        if (this.x > width - this.diameter/2  || this.x < this.diameter/2 ) { // Limiting it's movement area x wise
+            this.xdirection *= -1; // 180° your direction on the x axis
         }
     }
-    connect(violentArray){ 
-        for(let i = 0; i < violentArray.length; i++){
-        if (dist(violentArray[i].x, violentArray[i].y, this.x, this.y) <= this.thresh) {
-            stroke(218,173,37);
-            strokeWeight(3);
-            line(violentArray[i].x, violentArray[i].y, this.x, this.y);
+    connect(violentArray){  // connecting to violent particles
+        for(let i = 0; i < violentArray.length; i++){ // for loop, going through each violent particles in the array 
+        if (dist(violentArray[i].x, violentArray[i].y, this.x, this.y) <= this.thresh) { // if violent particle is located this.thresh to scared particle
+            stroke(218,173,37); // then create a line between both, in the scared colour
+            strokeWeight(3); // 3px stoke
+            line(violentArray[i].x, violentArray[i].y, this.x, this.y); // from scared center to violent center
           }
         }
       }
@@ -129,35 +122,36 @@ class scaredPart{
 
 class allyPart{
     constructor(){
-        this.x = random(width);
-        this.y = random(height);
-        this.diameter = random(30,40);
-        this.speed = 2;
-        this.xdirection = 0;
-        this.thresh = 100;
+        this.x = random(width); // created at a random x point based on width
+        this.y = random(height); // created at a random y point based on height
+        this.diameter = random(30,40); // created in a random size within specific range
+        this.speed = 2; // will be jittered at a specific speed
+        this.xdirection = 0; // direction variables to limit it's movement area
+        this.ydirection = 0; // direction variables to limit it's movement area
+        this.thresh = 100; // threshold with which it will react to other particles
     }
 
     display(){
-        push();
-        noStroke();
-        fill(11,random(75,95),random(82,100));
-        ellipse(this.x,this.y,this.diameter);
+        push(); // push and pop to avoid affecting other elements
+        noStroke(); // no stroke
+        fill(11,random(75,95),random(82,100)); // Teal fill
+        ellipse(this.x,this.y,this.diameter); // Ellipse based on previously determined parameters
         pop();
-        this.x += random(-this.speed,this.speed);
-        this.y += random(-this.speed,this.speed);
-        if (this.y > height - this.diameter || this.y < 0 + this.diameter) {
-            this.ydirection *= -1;
+        this.x += random(-this.speed,this.speed); // Creating a x jitter
+        this.y += random(-this.speed,this.speed); // Creating a y jitter 
+        if (this.y > height - this.diameter || this.y < 0 + this.diameter) { // Limiting it's movement area y wise
+            this.ydirection *= -1; // 180° your direction on the y axis
           }
-        if (this.x > width - this.diameter || this.x < 0 + this.diameter) {
-            this.xdirection *= -1;
+        if (this.x > width - this.diameter || this.x < 0 + this.diameter) { // Limiting it's movement area x wise
+            this.xdirection *= -1; // 180° your direction on the x axis
         }
     }
-    connect(violentArray){ 
-        for(let i = 0; i < violentArray.length; i++){
-        if (dist(violentArray[i].x, violentArray[i].y, this.x, this.y) <= this.thresh) {
-            stroke(11,82,91);
-            strokeWeight(3);
-            line(violentArray[i].x, violentArray[i].y, this.x, this.y);
+    connect(violentArray){  // connecting to violent particles
+        for(let i = 0; i < violentArray.length; i++){ // for loop, going through each violent particles in the array 
+        if (dist(violentArray[i].x, violentArray[i].y, this.x, this.y) <= this.thresh) { // if violent particle is located this.thresh to ally particle
+            stroke(11,82,91); // then create a line between both, in the ally colour
+            strokeWeight(3); // 3px stoke
+            line(violentArray[i].x, violentArray[i].y, this.x, this.y); // from ally center to violent center
           }
         }
       }
