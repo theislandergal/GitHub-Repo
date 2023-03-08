@@ -21,27 +21,28 @@ let DogImages = [];
 
 function preload() {
 table = loadTable("animal-data-1.csv", "csv", "header");
-let Dog1 = loadImage('/assets/images/Dog1.png');
-let Dog2 = loadImage('/assets/images/Dog2.png');
-let Dog3 = loadImage('/assets/images/Dog3.png');
-let Dog4 = loadImage('/assets/images/Dog4.png');
-let Husky1 = loadImage('/assets/images/Husky1.png');
-let Husky2 = loadImage('/assets/images/Husky2.png');
-let Pitbull = loadImage('/assets/images/Pitbull.png');
-let Bulldog = loadImage('/assets/images/Bulldog.png');
-let YoundDog = loadImage('/assets/images/YoungDog.png');
-let Paw = loadImage('/assets/images/Paw.png');
+let Dog1 = loadImage('assets/images/Dog1.png');
+let Dog2 = loadImage('assets/images/Dog2.png');
+let Dog3 = loadImage('assets/images/Dog3.png');
+let Dog4 = loadImage('assets/images/Dog4.png');
+let Husky1 = loadImage('assets/images/Husky1.png');
+let Husky2 = loadImage('assets/images/Husky2.png');
+let Pitbull = loadImage('assets/images/Pitbull.png');
+let Bulldog = loadImage('assets/images/Bulldog.png');
+let YoundDog = loadImage('assets/images/YoungDog.png');
+let Paw = loadImage('assets/images/Paw.png');
 
 DogImages = [Dog1,Dog2,Dog3,Dog4,Husky1,Husky2,Pitbull,Bulldog,YoundDog,Paw];
 }
-
-
 
 /**
 Description of setup
 */
 function setup() {
-
+    createCanvas(windowWidth, windowHeight);
+    background(20);
+    print(DogImages);
+    print(table);
 }
 
 
