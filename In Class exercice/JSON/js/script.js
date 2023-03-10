@@ -23,7 +23,7 @@ function setup() {
   print("Current temp: "+ weather.current_weather.temperature);
   print("Current wind speed: "+ weather.current_weather.windspeed);
   print("Cloud Cover: "+ weather.hourly.cloudcover_mid[currentCloudCover]);
-  print("The hourly temperature is (in C): ")
+  print("The hourly temperature is (in C): ");
   for(let i = 0; i < 5; i++){
     print(weather.hourly.temperature_2m[i]+" C");
   }
