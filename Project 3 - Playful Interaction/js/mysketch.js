@@ -1,4 +1,4 @@
-let COLS = ['#6AF549','#3CF4E3','#F5F042','#F501A7','#6E2FA9'];
+let COLS = ['#6AF549','#3CF4E3','#F5F042','#F501A7'];
 let PALETTE;
 
 function setup() {
@@ -16,7 +16,7 @@ function draw() {
 	rectMode(CENTER);
 	
 	typo(width /2 - width / 3.2, height /2, width / 4, height /4 / 2 * 7, true);
-	
+
 	const d = width * 0.08;
 	pattern(randPattern(d));
 	circlePattern(width/2,height/2,width+1000,height+1000, d);
@@ -76,10 +76,10 @@ function typo(cx, cy, w, h, isp)
 function randPattern(t)
 {
 	const ptArr = [
-		 PTN.stripeCircle(t / int(random(1, 5))),
-		 PTN.stripePolygon(4,  int(random(30, 40))),
-		 PTN.stripeRadial(TAU /  int(random(10, 30))),
-		 PTN.wave(t / int(random(1, 5)), t / int(random(10, 20)), t / 5, t / 10),
+		 PTN.stripeCircle(t / int(random(5, 7))),
+		//  PTN.stripePolygon(4,  int(random(30, 40))),
+		//  PTN.stripeRadial(TAU /  int(random(10, 30))),
+		//  PTN.wave(t / int(random(1, 5)), t / int(random(10, 20)), t / 5, t / 10),
 	]
 	return random(ptArr);
 }
