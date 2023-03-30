@@ -5,7 +5,7 @@ function setup() {
 	const s = min(windowWidth, windowHeight) * 0.9;
 	createCanvas(s, s);
 	background(240);
-	frameRate(0.75);
+	frameRate(1);
 }
 
 function draw() {
