@@ -16,8 +16,6 @@ function draw() {
 	rectMode(CENTER);
 	
 	typo(width /2 - width / 3.2, height /2, width / 4, height /4 / 2 * 7, true);
-	// typo(width * 0.49, height /2, width / 4, height /4 / 2 * 7, false);
-	// typo(width /2 + width / 3.2, height /2, width / 4, height /4 / 2 * 7, true);
 	
 	const d = width * 0.08;
 	pattern(randPattern(d));
@@ -78,27 +76,10 @@ function typo(cx, cy, w, h, isp)
 function randPattern(t)
 {
 	const ptArr = [
-		// PTN.noise(0.5),
-		// PTN.noiseGrad(0.4),
-		// PTN.stripe(t / int(random(6, 12))),
-		// PTN.stripeCircle(t / int(random(1, 5))),
-		PTN.stripePolygon(4,  int(random(30, 40))),
-		// PTN.stripeRadial(TAU /  int(random(10, 30))),
-		// PTN.wave(t / int(random(1, 5)), t / int(random(10, 20)), t / 5, t / 10),
-		// PTN.dot(t / 10, t / 10 * random(0.2, 1)),
-		// PTN.checked(t / int(random(1, 5)), t / int(random(1, 5))),
-		// PTN.cross(t / int(random(10, 20)), t / int(random(20, 40))),
-		// PTN.triangle(t / int(random(5, 20)), t / int(random(5, 20)))
+		 PTN.stripeCircle(t / int(random(1, 5))),
+		 PTN.stripePolygon(4,  int(random(30, 40))),
+		 PTN.stripeRadial(TAU /  int(random(10, 30))),
+		 PTN.wave(t / int(random(1, 5)), t / int(random(10, 20)), t / 5, t / 10),
 	]
 	return random(ptArr);
 }
-
-
-// function createCols(url)
-// {
-// 	let slaIndex = url.lastIndexOf("/");
-// 	let colStr = url.slice(slaIndex + 1);
-// 	let colArr = colStr.split("-");
-// 	for(let i = 0; i < colArr.length; i++)colArr[i] = "#" + colArr[i];
-// 	return colArr;
-// }
