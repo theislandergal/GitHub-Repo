@@ -81,17 +81,16 @@ function randPattern(t)
 		// PTN.noise(0.5),
 		// PTN.noiseGrad(0.4),
 		// PTN.stripe(t / int(random(6, 12))),
-		PTN.stripeCircle(t / int(random(1, 5))),
-		// PTN.stripePolygon(int(random(3, 7)),  int(random(6, 12))),
-		// PTN.stripeRadial(TAU /  int(random(6, 30))),
-		// PTN.wave(t / int(random(1, 3)), t / int(random(10, 20)), t / 5, t / 10),
+		// PTN.stripeCircle(t / int(random(1, 5))),
+		PTN.stripePolygon(4,  int(random(30, 40))),
+		// PTN.stripeRadial(TAU /  int(random(10, 30))),
+		// PTN.wave(t / int(random(1, 5)), t / int(random(10, 20)), t / 5, t / 10),
 		// PTN.dot(t / 10, t / 10 * random(0.2, 1)),
-		// PTN.checked(t / int(random(5, 20)), t / int(random(5, 20))),
+		// PTN.checked(t / int(random(1, 5)), t / int(random(1, 5))),
 		// PTN.cross(t / int(random(10, 20)), t / int(random(20, 40))),
 		// PTN.triangle(t / int(random(5, 20)), t / int(random(5, 20)))
 	]
 	return random(ptArr);
-	patternColors(shuffle(PALETTE));
 }
 
 
