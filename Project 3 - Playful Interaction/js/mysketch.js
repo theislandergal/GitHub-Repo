@@ -1,12 +1,23 @@
 let COLS = ['#6AF549','#3CF4E3','#F5F042','#F501A7'];
 let PALETTE;
+let TitleSound;
+
+function preload() {
+	soundFormats('mp3','ogg');
+	TitleSound = loadSound('assets/sounds/384468__frankum__vintage-elecro-pop-loop.mp3');
+  }
 
 function setup() {
 	const s = min(windowWidth, windowHeight) * 0.9;
-	createCanvas(s, s);
+	let cnv = createCanvas(s, s);
+  	cnv.mousePressed(canvasPressed);
 	background(240);
 	frameRate(1);
 }
+
+function canvasPressed() {
+	TitleSound.play();
+  }
 
 function draw() {
 	PALETTE = shuffle(COLS, true);
